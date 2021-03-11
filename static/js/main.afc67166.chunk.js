@@ -1,2 +1,0 @@
-(this.webpackJsonptracker=this.webpackJsonptracker||[]).push([[0],{9:function(e,t,c){"use strict";c.r(t);c(1);var r=c(3),n=c(0);var s=function(){return Object(n.jsxs)("div",{className:"container center-align",children:[Object(n.jsx)("h3",{children:"tracker"}),Object(n.jsx)("form",{action:"#",className:"col s12",children:Object(n.jsx)("input",{type:"text",name:"tracker",id:"newTracker"})})]})};Object(r.render)(Object(n.jsx)(s,{}),document.getElementById("root"))}},[[9,1,2]]]);
-//# sourceMappingURL=main.afc67166.chunk.js.map
