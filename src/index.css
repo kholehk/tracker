@@ -21,6 +21,7 @@ body {
   border: 2px solid grey;
   border-radius: 50vh;
   display: flex;
+  margin-bottom: 2rem;
 }
 
 .form:focus-within {
@@ -64,4 +65,37 @@ body {
 
 .button:active .icon {
   box-shadow: none;
+}
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  margin-bottom: 1rem;
+}
+
+.item {
+  border-top: 1px solid grey;
+  display: flex;
+}
+
+.item:last-child {
+  border-bottom: 1px solid grey;
+}
+
+.tracker-title {
+  text-align: left;
+  flex: 1 1 0;
+}
+
+.m1 {
+  margin-left: 1rem;
+}
+
+.red {
+  color: red;
+}
+
+.black {
+  color: black;
 }
