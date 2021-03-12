@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import trackers from '../utils/trackers';
+import { connect } from 'react-redux';
+
 import Item from './Item';
 
-function List() {
+function List({ trackers }) {
   return (
     <ul className="list">
       {trackers.map(
@@ -12,4 +14,9 @@ function List() {
   );
 }
 
-export default List;
+const mapStateToProps = (state) => ({
+  trackers: state.trackers.trackers,
+  hasErrors: state.trackers.hasErrors,
+});
+
+export default connect(mapStateToProps)(List);
