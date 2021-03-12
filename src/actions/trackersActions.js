@@ -1,15 +1,10 @@
 const trackersKey = 'MY_LOCAL_TRACKERS';
 
-export const GET_TRACKERS_SUCCESS = 'GET_TRACKERS_SUCCESS';
-export const GET_TRACKERS_FAILURE = 'GET_TRACKERS_FAILURE';
+export const GET_TRACKERS = 'GET_TRACKERS';
 
-export const getTrackersSuccess = (trackers) => ({
-  type: GET_TRACKERS_SUCCESS,
+export const getTrackers = (trackers) => ({
+  type: GET_TRACKERS,
   payload: trackers,
-});
-
-export const getTrackersFailure = () => ({
-  type: GET_TRACKERS_FAILURE,
 });
 
 export function parseTrackers() {
@@ -18,9 +13,10 @@ export function parseTrackers() {
       const data = JSON.parse(localStorage.getItem(trackersKey));
 
       if (!Array.isArray(data)) throw new Error('The trackers must be in an array');
-      dispatch(getTrackersSuccess(data));
+      dispatch(getTrackers(data));
     } catch (error) {
-      dispatch(getTrackersFailure());
+      localStorage.setItem(trackersKey, '[]');
+      console.error(error);
     }
   };
 }
