@@ -12,11 +12,13 @@ export const getTrackers = (trackers) => ({
 export const postTracker = (tracker) => ({
   type: POST_TRACKER,
   payload: tracker,
+  key: trackersKey,
 });
 
 export const delTracker = (tracker) => ({
   type: DEL_TRACKER,
   payload: tracker,
+  key: trackersKey,
 });
 
 export function readTrackers() {
@@ -28,7 +30,6 @@ export function readTrackers() {
       dispatch(getTrackers(data));
     } catch (error) {
       localStorage.setItem(trackersKey, '[]');
-      console.error(error);
     }
   };
 }
