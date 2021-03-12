@@ -1,5 +1,5 @@
 import React from 'react';
-import { buttonType, decorationType } from '../types';
+import { buttonType, decorationType } from '../utils/types';
 import Button from './Button';
 
 function Form() {
