@@ -39,3 +39,9 @@ export function createTracker(tracker) {
     dispatch(postTracker(tracker));
   };
 }
+
+export function deleteTracker(tracker) {
+  return (dispatch) => {
+    dispatch(delTracker(tracker));
+  };
+}

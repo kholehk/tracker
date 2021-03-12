@@ -12,9 +12,14 @@ export default function trackersReducer(state = initialState, action) {
       return { trackers: action.payload };
     case actions.POST_TRACKER:
       trackers = [action.payload, ...state.trackers];
-      localStorage.setItem(action.key, JSON.stringify(trackers));
-      return { trackers };
+      break;
+    case actions.DEL_TRACKER:
+      trackers = state.trackers.filter((tracker) => (tracker.start !== action.payload.start));
+      break;
     default:
       return state;
   }
+
+  localStorage.setItem(action.key, JSON.stringify(trackers));
+  return { trackers };
 }
