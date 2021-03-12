@@ -2,13 +2,13 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { parseTrackers } from '../actions/trackersActions';
+import { readTrackers } from '../actions/trackersActions';
 
 import Item from './Item';
 
 function List({ dispatch, trackers }) {
   useEffect(() => {
-    dispatch(parseTrackers());
+    dispatch(readTrackers());
   }, [dispatch]);
 
   return (

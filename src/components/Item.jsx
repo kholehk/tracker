@@ -9,12 +9,11 @@ function Item(props) {
   const { tracker } = props;
   const { start } = tracker;
   const now = Date.now();
-  const duration = now - start;
-  const days = moment(duration).days();
-  const hours = 24 * days + moment(duration).hours();
-  const min = moment(duration).minutes();
-  const sec = moment(duration).seconds();
-  const time = `${hours}:${min}:${sec}`;
+  const duration = moment.duration(now - start);
+  const days = duration.days();
+  const hours = 24 * days + duration.hours();
+  const tail = moment(duration).format('mm:ss');
+  const time = `${hours}:${tail}`;
 
   return (
     <li className="item">

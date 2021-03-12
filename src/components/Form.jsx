@@ -1,9 +1,12 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 
+import { createTracker } from '../actions/trackersActions';
 import { buttonType, decorationType } from '../utils/types';
 import Button from './Button';
 
-function Form() {
+function Form({ dispatch }) {
   const decoration = { ...decorationType };
   const initNewTracker = { title: '', start: null };
   const [newTracker, setNewTracker] = useState(initNewTracker);
@@ -19,7 +22,7 @@ function Form() {
       className="input-group circle"
       onSubmit={(event) => {
         event.preventDefault();
-        // add newTracker to Store
+        dispatch(createTracker({ ...newTracker, start: Date.now() }));
         setNewTracker(initNewTracker);
       }}
     >
@@ -40,4 +43,8 @@ function Form() {
   );
 }
 
-export default Form;
+const mapStateToProps = (state) => ({
+  trackers: state.trackers.trackers,
+});
+
+export default connect(mapStateToProps)(Form);
