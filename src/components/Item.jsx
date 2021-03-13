@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import moment from 'moment';
+import momentDurationFormatSetup from 'moment-duration-format';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
@@ -7,11 +8,13 @@ import { deleteTracker } from '../actions/trackersActions';
 import { buttonType } from '../utils/types';
 import Button from './Button';
 
-function Item({ dispatch, tracker }) {
-  const hasPassed = () => (Date.now() - tracker.start);
-  const [time, setTime] = useState(hasPassed());
+momentDurationFormatSetup(moment);
 
-  useEffect(() => { setTime(hasPassed()); }, [Date.now(), tracker.start]);
+function Item({ dispatch, tracker }) {
+  const hasPassed = (start) => (Date.now() - start);
+  const [time, setTime] = useState(hasPassed(tracker.start));
+
+  useEffect(() => { setTime(hasPassed(tracker.start)); }, [Date.now(), tracker.start]);
 
   const handlePlayTracker = () => { };
 
@@ -23,7 +26,10 @@ function Item({ dispatch, tracker }) {
     <li className="item">
       <span className="tracker-title">{tracker.title}</span>
       <span className="tracker-time ml-1">
-        { moment(time).format('hh:mm:ss') }
+        {
+          // moment(time).format('DD hh:mm:ss')
+          moment.duration(time).format('h:mm:ss')
+        }
       </span>
       <Button
         type={buttonType.pause}
