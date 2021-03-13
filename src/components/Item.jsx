@@ -13,7 +13,10 @@ momentDurationFormatSetup(moment);
 function Item({
   dispatch, idx, now, tracker,
 }) {
-  const hasPassed = (start) => (Date.now() - start);
+  const hasPassed = (start) => {
+    const prevInterval = tracker.intervals.reduce((acc, cur) => (acc + cur), 0);
+    return tracker.isPlay ? (Date.now() - start + prevInterval) : prevInterval;
+  };
   const [time, setTime] = useState(hasPassed(tracker.start));
   const [pauseplayButton, setPauseplayButton] = useState(buttonType.pause);
 
