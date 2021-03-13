@@ -20,6 +20,6 @@ export default function trackersReducer(state = initialState, action) {
       return state;
   }
 
-  localStorage.setItem(action.key, JSON.stringify(trackers));
+  localStorage.setItem(action.storage, JSON.stringify(trackers));
   return { trackers };
 }

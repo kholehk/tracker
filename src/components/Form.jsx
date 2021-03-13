@@ -22,7 +22,9 @@ function Form({ dispatch }) {
       className="input-group circle"
       onSubmit={(event) => {
         event.preventDefault();
-        dispatch(createTracker({ ...newTracker, start: Date.now() }));
+        const title = newTracker.title.trim() || 'No name tracker';
+        const start = Date.now();
+        dispatch(createTracker({ ...newTracker, title, start }));
         setNewTracker(initNewTracker);
       }}
     >
