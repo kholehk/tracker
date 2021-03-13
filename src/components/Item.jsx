@@ -4,7 +4,7 @@ import momentDurationFormatSetup from 'moment-duration-format';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-import { deleteTracker } from '../actions/trackersActions';
+import { deleteTracker, pausedPLayingTracker } from '../actions/trackersActions';
 import { buttonType } from '../utils/types';
 import Button from './Button';
 
@@ -18,7 +18,9 @@ function Item({
 
   useEffect(() => setTime(hasPassed(tracker.start)), [now]);
 
-  const handlePlayTracker = () => { };
+  const handlePausePlayTracker = () => {
+    dispatch(pausedPLayingTracker(tracker));
+  };
 
   const handleDeleteTracker = () => {
     dispatch(deleteTracker(tracker));
@@ -34,12 +36,12 @@ function Item({
       </span>
       <Button
         type={buttonType.pause}
-        decoration={{ margin: 'ml-1', color: 'black' }}
-        handleTracker={handlePlayTracker}
+        style={{ margin: 'ml-1', color: 'black' }}
+        handleTracker={handlePausePlayTracker}
       />
       <Button
         type={buttonType.remove}
-        decoration={{ margin: 'ml-1', color: 'red' }}
+        style={{ margin: 'ml-1', color: 'red' }}
         handleTracker={handleDeleteTracker}
       />
     </li>

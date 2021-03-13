@@ -2,15 +2,15 @@
 import React from 'react';
 
 function Button(props) {
-  const { type, decoration, handleTracker } = props;
+  const { type, style, handleTracker } = props;
 
   return (
     <button
-      className={`button circle ${decoration.margin}`}
+      className={`button circle ${style.margin}`}
       type={type.isSubmit ? 'submit' : 'button'}
-      onClick={() => handleTracker && handleTracker()}
+      onClick={(event) => handleTracker && handleTracker(event)}
     >
-      <i className={`material-icons icon circle ${decoration.color}`}>
+      <i className={`material-icons icon circle ${style.color}`}>
         {type.icon}
       </i>
     </button>

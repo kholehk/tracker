@@ -5,9 +5,8 @@ const buttonType = Object.freeze({
   remove: { icon: 'remove_circle_outline' },
 });
 
-const decorationType = Object.freeze({
-  margin: '',
-  color: 'green',
+const trackerType = Object.freeze({
+  title: '', start: null, isPlay: true, intervals: [],
 });
 
-export { buttonType, decorationType };
+export { buttonType, trackerType };

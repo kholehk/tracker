@@ -3,12 +3,11 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { createTracker } from '../actions/trackersActions';
-import { buttonType, decorationType } from '../utils/types';
+import { buttonType, trackerType } from '../utils/types';
 import Button from './Button';
 
 function Form({ dispatch }) {
-  const decoration = { ...decorationType };
-  const initNewTracker = { title: '', start: null };
+  const initNewTracker = { ...trackerType };
   const [newTracker, setNewTracker] = useState(initNewTracker);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -24,7 +23,9 @@ function Form({ dispatch }) {
         event.preventDefault();
         const title = newTracker.title.trim() || 'No name tracker';
         const start = Date.now();
-        dispatch(createTracker({ ...newTracker, title, start }));
+        dispatch(createTracker({
+          ...newTracker, title, start,
+        }));
         setNewTracker(initNewTracker);
       }}
     >
@@ -39,7 +40,7 @@ function Form({ dispatch }) {
       />
       <Button
         type={buttonType.submit}
-        decoration={decoration}
+        style={{ margin: '', color: 'green' }}
       />
     </form>
   );
