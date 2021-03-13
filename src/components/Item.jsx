@@ -10,11 +10,13 @@ import Button from './Button';
 
 momentDurationFormatSetup(moment);
 
-function Item({ dispatch, tracker }) {
+function Item({
+  dispatch, idx, now, tracker,
+}) {
   const hasPassed = (start) => (Date.now() - start);
   const [time, setTime] = useState(hasPassed(tracker.start));
 
-  useEffect(() => { setTime(hasPassed(tracker.start)); }, [Date.now(), tracker.start]);
+  useEffect(() => setTime(hasPassed(tracker.start)), [now]);
 
   const handlePlayTracker = () => { };
 
@@ -24,10 +26,9 @@ function Item({ dispatch, tracker }) {
 
   return (
     <li className="item">
-      <span className="tracker-title">{tracker.title}</span>
+      <span className="tracker-title">{`#${idx + 1} ${tracker.title}`}</span>
       <span className="tracker-time ml-1">
         {
-          // moment(time).format('DD hh:mm:ss')
           moment.duration(time).format('h:mm:ss')
         }
       </span>

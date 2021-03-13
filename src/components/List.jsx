@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import { readTrackers } from '../actions/trackersActions';
@@ -7,6 +7,10 @@ import { readTrackers } from '../actions/trackersActions';
 import Item from './Item';
 
 function List({ dispatch, trackers }) {
+  const [now, setNow] = useState(Date.now());
+
+  setInterval(() => setNow(Date.now()), 1000);
+
   useEffect(() => {
     dispatch(readTrackers());
   }, [dispatch]);
@@ -14,7 +18,7 @@ function List({ dispatch, trackers }) {
   return (
     <ul className="list">
       {trackers.map(
-        (tracker) => (<Item tracker={tracker} key={tracker.start} />),
+        (tracker, idx) => (<Item idx={idx} now={now} tracker={tracker} key={tracker.start} />),
       )}
     </ul>
   );
