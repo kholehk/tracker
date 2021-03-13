@@ -1,17 +1,20 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-function Button(props) {
-  const { type, style, handleTracker } = props;
+function Button({
+  type, style, handleTracker,
+}) {
+  const { margin, color } = style;
+  const { isSubmit, icon } = type;
 
   return (
     <button
-      className={`button circle ${style.margin}`}
-      type={type.isSubmit ? 'submit' : 'button'}
+      className={`button circle ${margin}`}
+      type={isSubmit ? 'submit' : 'button'}
       onClick={(event) => handleTracker && handleTracker(event)}
     >
-      <i className={`material-icons icon circle ${style.color}`}>
-        {type.icon}
+      <i className={`material-icons icon circle ${color}`}>
+        {icon}
       </i>
     </button>
   );

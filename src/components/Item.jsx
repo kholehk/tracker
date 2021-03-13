@@ -15,8 +15,14 @@ function Item({
 }) {
   const hasPassed = (start) => (Date.now() - start);
   const [time, setTime] = useState(hasPassed(tracker.start));
+  const [pauseplayButton, setPauseplayButton] = useState(buttonType.pause);
 
   useEffect(() => setTime(hasPassed(tracker.start)), [now]);
+
+  useEffect(
+    () => setPauseplayButton(tracker.isPlay ? buttonType.pause : buttonType.play),
+    [tracker],
+  );
 
   const handlePausePlayTracker = () => {
     dispatch(pausedPLayingTracker(tracker));
@@ -35,7 +41,7 @@ function Item({
         }
       </span>
       <Button
-        type={buttonType.pause}
+        type={pauseplayButton}
         style={{ margin: 'ml-1', color: 'black' }}
         handleTracker={handlePausePlayTracker}
       />
