@@ -34,7 +34,7 @@ export function readTrackers() {
     let data = [];
 
     try {
-      data = JSON.parse(localStorage.getItem(trackersStorage));
+      data = JSON.parse(localStorage.getItem(trackersStorage)) || [];
 
       if (!Array.isArray(data)) throw new Error('The trackers create array in local Storage');
     } catch (error) {
