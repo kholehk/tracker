@@ -4,7 +4,7 @@ import momentDurationFormatSetup from 'moment-duration-format';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-import { deleteTracker, pausedPLayingTracker } from '../actions/trackersActions';
+import { deleteTracker, pauseplayTracker } from '../actions/trackersActions';
 import { buttonType } from '../utils/types';
 import Button from './Button';
 
@@ -28,7 +28,7 @@ function Item({
   );
 
   const handlePausePlayTracker = () => {
-    dispatch(pausedPLayingTracker(tracker));
+    dispatch(pauseplayTracker(tracker));
   };
 
   const handleDeleteTracker = () => {
@@ -58,7 +58,7 @@ function Item({
 }
 
 const mapStateToProps = (state) => ({
-  trackers: state.trackers.trackers,
+  trackers: state.trackersReducer.trackers,
 });
 
 export default connect(mapStateToProps)(Item);

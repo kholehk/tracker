@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import { createTracker } from '../actions/trackersActions';
+import { postTracker } from '../actions/trackersActions';
 import { buttonType, trackerType } from '../utils/types';
 import Button from './Button';
 
@@ -23,7 +23,7 @@ function Form({ dispatch }) {
         event.preventDefault();
         const title = newTracker.title.trim() || 'No name tracker';
         const start = Date.now();
-        dispatch(createTracker({
+        dispatch(postTracker({
           ...newTracker, title, start,
         }));
         setNewTracker(initNewTracker);
@@ -47,7 +47,7 @@ function Form({ dispatch }) {
 }
 
 const mapStateToProps = (state) => ({
-  trackers: state.trackers.trackers,
+  trackers: state.trackersReducer.trackers,
 });
 
 export default connect(mapStateToProps)(Form);

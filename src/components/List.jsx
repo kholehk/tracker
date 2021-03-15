@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-import { readTrackers } from '../actions/trackersActions';
+import { getTrackers } from '../actions/trackersActions';
 
 import Item from './Item';
 
@@ -12,7 +12,7 @@ function List({ dispatch, trackers }) {
   setInterval(() => setNow(Date.now()), 1000);
 
   useEffect(() => {
-    dispatch(readTrackers());
+    dispatch(getTrackers());
   }, [dispatch]);
 
   return (
@@ -25,7 +25,7 @@ function List({ dispatch, trackers }) {
 }
 
 const mapStateToProps = (state) => ({
-  trackers: state.trackers.trackers,
+  trackers: state.trackersReducer.trackers,
 });
 
 export default connect(mapStateToProps)(List);
