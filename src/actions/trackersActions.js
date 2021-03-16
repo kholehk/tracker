@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 export const GET_TRACKERS = 'GET_TRACKERS';
 export const POST_TRACKER = 'POST_TRACKER';
 export const DEL_TRACKER = 'DEL_TRACKER';

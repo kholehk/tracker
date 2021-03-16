@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import * as actions from '../actions/trackersActions';
 import { trackerType } from '../utils/types';
 

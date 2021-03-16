@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable react/prop-types */
 import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
